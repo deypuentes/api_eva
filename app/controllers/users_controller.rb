@@ -20,4 +20,6 @@ class UsersController < ApplicationController
     def user_params
         params.permit(:name, :num_document, :ring, :email, :document, :document_id)
     end    
+    
+    
 end

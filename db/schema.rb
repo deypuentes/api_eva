@@ -10,12 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181025015100) do
+ActiveRecord::Schema.define(version: 20181027003002) do
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "telephone_number"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
+  end
 
   create_table "documents", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "emergency_numbers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "telephone_number"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "message"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "security_asks", force: :cascade do |t|
+    t.string   "ask"
+    t.string   "response"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_security_asks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
